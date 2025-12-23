@@ -2,7 +2,7 @@
 
 import React, { useContext } from "react";
 import { MealsContext } from "../../contexts/MealsContext";
-import Button from "./Button";
+import Button from "../ui/Button";
 
 interface IProps {
   filter: string;
@@ -12,7 +12,7 @@ const Tab: React.FC<IProps> = ({ filter }) => {
   const { selectedCategory, setSelectedCategory } = useContext(MealsContext);
 
   return (
-    <Button
+    <li
       onClick={() => setSelectedCategory(filter)}
       className={`px-4 py-1 text-base cursor-pointer text-foreground transition-colors duration-300 rounded-full! ${
         selectedCategory === filter
@@ -21,7 +21,7 @@ const Tab: React.FC<IProps> = ({ filter }) => {
       }`}
     >
       <span className="capitalize font-semibold">{filter}</span>
-    </Button>
+    </li>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import Search from "./Search";
 import Container from "./ui/Container";
 import { Lobster } from "next/font/google";
-import CartIcon from "./ui/CartIcon";
+import CartIcon from "./cart/CartIcon";
 import Link from "next/link";
 
 const lobsterFont = Lobster({
@@ -26,9 +26,7 @@ const Navbar: React.FC = () => {
           {/* cart & search */}
           <div className="flex items-center gap-8 flex-1 justify-end">
             <CartIcon />
-            <div className="w-fit">
-              <Search />
-            </div>
+            <Search />
           </div>
         </nav>
       </Container>

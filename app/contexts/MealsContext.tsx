@@ -1,6 +1,11 @@
 "use client";
 
-import React, { createContext, useState, type ReactNode } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import type { ICartItem, IMenuItem } from "../types/interfaces";
 import { egyptianMenu } from "../data/menuItems";
 
@@ -27,7 +32,18 @@ const MealsContextProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [meals, setMeals] = useState<IMenuItem[]>(egyptianMenu);
-  const [cartItems, setCartItems] = useState<ICartItem[]>([]);
+  const [cartItems, setCartItems] = useState<ICartItem[]>(() => {
+    if (typeof window === "undefined") return [];
+    const storedCart = localStorage.getItem("mealsCart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
+  //———————————————————————————————— get stored cart items ————————————————————————————————
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("mealsCart", JSON.stringify(cartItems));
+    }
+  }, [cartItems]);
 
   return (
     <MealsContext.Provider
