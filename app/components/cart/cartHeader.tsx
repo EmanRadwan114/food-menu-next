@@ -2,6 +2,7 @@
 import React, { useContext, useMemo } from "react";
 import { MealsContext } from "../../contexts/MealsContext";
 import Button from "../ui/Button";
+import { toast } from "react-toastify";
 
 const CartHeader: React.FC = () => {
   const { cartItems, setCartItems } = useContext(MealsContext);
@@ -18,6 +19,7 @@ const CartHeader: React.FC = () => {
 
   const clearCart = () => {
     setCartItems([]);
+    toast.success("Cart is cleared successfully!");
   };
 
   return (
