@@ -30,7 +30,7 @@ const Search: React.FC = () => {
     <input
       type="search"
       placeholder="Search a Meal..."
-      className="px-3 bg-background py-2 border border-foreground/30 rounded-sm w-full focus-within:outline-primary focus-within:outline-1"
+      className="px-3 bg-background py-1 border border-foreground/30 rounded-sm w-full focus-within:outline-primary focus-within:outline-1"
       value={searchTerm}
       onChange={handleChange}
       onBlur={() => {

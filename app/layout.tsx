@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { MealsContextProvider } from "./contexts/MealsContext";
 import { ToastContainer } from "react-toastify";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const interFont = Inter({
   weight: ["400", "600", "700", "800"],
@@ -25,7 +27,13 @@ export default function RootLayout({
       <body className={`${interFont.className} antialiased`}>
         <MealsContextProvider>
           <ToastContainer />
-          {children}
+          <div className="flex flex-col min-h-screen">
+            {/* navbar */}
+            <Navbar />
+            {children}
+            {/* footer */}
+            <Footer />
+          </div>
         </MealsContextProvider>
       </body>
     </html>

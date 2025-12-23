@@ -1,5 +1,5 @@
 import React from "react";
-import Tab from "./ui/Tabs";
+import Tab from "../ui/Tabs";
 
 const filters: string[] = ["all", "breakfast", "lunch", "dinner", "dessert"];
 

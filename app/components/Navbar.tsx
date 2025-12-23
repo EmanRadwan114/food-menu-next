@@ -3,6 +3,7 @@ import Search from "./Search";
 import Container from "./ui/Container";
 import { Lobster } from "next/font/google";
 import CartIcon from "./ui/CartIcon";
+import Link from "next/link";
 
 const lobsterFont = Lobster({
   weight: ["400"],
@@ -12,13 +13,15 @@ const lobsterFont = Lobster({
 const Navbar: React.FC = () => {
   return (
     <header className="bg-neutral-200 dark:bg-neutral-900 sticky top-0 w-full shadow-md z-100">
-      <Container className="py-4!">
+      <Container className="py-2!">
         <nav className="flex flex-col sm:flex-row items-center sm:justify-between gap-4">
-          <p
-            className={`font-extrabold text-3xl text-lime-700 ${lobsterFont.className}`}
-          >
-            🥘Egyptian Food
-          </p>
+          <Link href={"/"} className="py-1">
+            <p
+              className={`font-extrabold text-3xl text-lime-700 ${lobsterFont.className}`}
+            >
+              🥘Egyptian Food
+            </p>
+          </Link>
 
           {/* cart & search */}
           <div className="flex items-center gap-8 flex-1 justify-end">

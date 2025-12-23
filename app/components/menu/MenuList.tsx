@@ -2,9 +2,9 @@
 
 import React, { useContext, useEffect } from "react";
 import MenuCard from "./MenuCard";
-import { egyptianMenu } from "../data/menuItems";
+import { egyptianMenu } from "../../data/menuItems";
 import { AnimatePresence } from "motion/react";
-import { MealsContext } from "../contexts/MealsContext";
+import { MealsContext } from "../../contexts/MealsContext";
 
 const MenuList: React.FC = () => {
   const { meals, selectedCategory, setMeals } = useContext(MealsContext);

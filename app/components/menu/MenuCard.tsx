@@ -3,31 +3,50 @@
 import React, { useContext } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
-import Button from "./ui/Button";
 import { toast } from "react-toastify";
-import { IMenuItem } from "../types/interfaces";
-import { MealsContext } from "../contexts/MealsContext";
-import { v4 as uuidv4 } from 'uuid';
-
+import { v4 as uuidv4 } from "uuid";
+import { MealsContext } from "@/app/contexts/MealsContext";
+import { IMenuItem } from "@/app/types/interfaces";
+import Button from "../ui/Button";
 
 interface IProps {
   item: IMenuItem;
 }
 
 const MenuCard: React.FC<IProps> = ({ item }) => {
-  const { setCartItems } = useContext(MealsContext);
+  const { cartItems, setCartItems } = useContext(MealsContext);
 
   const addToCart = (meal: IMenuItem) => {
-    setCartItems((prev) => [
-      ...prev,
-      {
-        id: uuidv4(),
-        mealId: meal.id,
-        title: meal.title,
-        price: meal.price,
-        quantity: 1,
-      },
-    ]);
+    const storedMeal = cartItems.find((item) => item.mealId === meal.id);
+    console.log(storedMeal);
+
+    if (!storedMeal) {
+      setCartItems((prev) => [
+        ...prev,
+        {
+          id: uuidv4(),
+          mealId: meal.id,
+          title: meal.title,
+          price: meal.price,
+          totalPrice: meal.price,
+          thumbnail: meal.thumbnail,
+          quantity: 1,
+        },
+      ]);
+    } else {
+      const updatedCart = cartItems.map((item) =>
+        item.id === storedMeal.id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+              totalPrice: item.price * (item.quantity + 1),
+            }
+          : item
+      );
+
+      setCartItems(updatedCart);
+    }
+
     toast.success("Meal is added to cart successfully!");
   };
 

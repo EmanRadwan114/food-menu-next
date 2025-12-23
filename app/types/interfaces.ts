@@ -14,6 +14,8 @@ export interface ICartItem {
   id: string;
   mealId: number;
   title: string;
+  thumbnail: string;
   quantity: number;
   price: number;
+  totalPrice: number;
 }
