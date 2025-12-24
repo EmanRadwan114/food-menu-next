@@ -11,7 +11,6 @@ const Search: React.FC = () => {
 
   //———————————————————— get route to render input conditionally ————————————————————
   const pathname = usePathname();
-  console.log(pathname);
 
   //———————————————————————————————— debouncing search ————————————————————————————————
   const debouncedSearch = useRef(
